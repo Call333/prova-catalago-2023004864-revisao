@@ -23,3 +23,24 @@ datasource db {
 
 // TODO: model Categoria { ... }
 // TODO: model Produto   { ... }
+
+model Categoria {
+  id    Int    @id @default(autoincrement())
+  nome    String    @unique
+
+  produtos Produto[]
+
+  @@map("categoria")
+}
+
+model Produto {
+  id    Int    @id @default(autoincrement())
+  nome    String
+  preco    Decimal
+
+  categoria_id    Int    @map("categoria_id")
+
+  categoria    Categoria @relation(fields: [categoria_id], references: [id])
+
+  @@map("produto")
+}
