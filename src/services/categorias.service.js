@@ -11,4 +11,16 @@ export class CategoriasService {
     this.repo = categoriasRepository;
   }
   // TODO: criar(dados), listar().
+
+    async criar(dados) {
+        if(!dados.nome) {
+            throw new AppError("O nome é OBRIGATÓRIO.", 422);
+        }
+
+        return await this.repo.create(dados);
+    }
+
+    async listar() {
+        return await this.repo.findAll();
+    }
 }
