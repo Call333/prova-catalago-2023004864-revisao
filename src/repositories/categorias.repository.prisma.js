@@ -14,6 +14,8 @@ export class CategoriasRepositoryPrisma {
                 nome: dados.nome,
             }
         });
+
+        return novaCategoria;
     }
 
     async findAll() {
